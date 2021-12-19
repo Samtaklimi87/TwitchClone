@@ -15,6 +15,8 @@ import "@stream-io/stream-chat-css/dist/css/index.css";
 import Auth from "./components/Auth";
 import MessegingContainer from "./components/MessegingContainer";
 import Video from "./components/Video";
+import Cookies from "universal-cookie";
+import { useCookies } from "react-cookie";
 
 const filters = { type: "gaming" };
 const options = { state: true, presence: true, limit: 10 };
@@ -23,9 +25,11 @@ const sort = { last_message_at: -1 };
 const client = StreamChat.getInstance("smvpecsv9z2p");
 
 const App = () => {
+
+  const [cookies, setCookies, removeCookies] = useCookies('user');
   const [clientReady, setClientReady] = useState(false);
   const [channel, setChannel] = useState(null);
-  const authToken = false;
+  const authToken = Cookies.AuthToken;
   useEffect(() => {
     const setupClient = async () => {
       try {

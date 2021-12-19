@@ -1,6 +1,9 @@
 import { useState } from "react";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const Auth = () => {
+    const[cookies , setCookies]= useCookies(['user']);
     const[username, setUsername] = useState(null);
     const[password, setPassword] = useState(null);
     const[passwordConfirm, setConfirmPassword] = useState(null);
@@ -10,12 +13,24 @@ const Auth = () => {
     console.log(username);
     console.log(password);
 
-    const handelSubmit = () => {
+    const handelSubmit = async() => {
         console.log('submited');
-        if (password !== passwordConfirm) {
+        if (password !== passwordConfirm && !isLogin) {
             setError(true);
             return;
         }
+        const response = await axios.post(`http://localhost:8000/signup` , {
+            username,
+            password
+        })
+        console.log(response)
+
+        setCookies('Name' , response.data.username);
+        setCookies('HashedPassword' , response.data.hashedPassword);
+        setCookies('userId' , response.data.userId);
+        setCookies('AuthToken ' , response.data.token);
+
+
     }
     return (
         <div className="auth-container">
