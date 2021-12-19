@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.video{
+  width: 50%;
+  height: 100%;
+}
+
+.messeging-container {
+  width: 50%;
+}
+
+.auth-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #070a0d;
+  display: flex;
+  justify-content: center;
+
+}
+
+.auth-container-box {
+  background-color:#242527 ;
+  align-self: center;
+}
+
+.auth-container-form {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  
+}
+
+.auth-container-form input{
+  font-size: 20px;
+  padding: 8px;
+  margin: 0 0 8px 0;
+}
+
+
+.auth-option button{
+  width: 50%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  border: none;
+  background-color: gray;
+  padding: 8px;
+  
+}
+
+.auth-option {
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-buttom {
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  border: none;
+  background-color: rgb(53, 50, 50);
+  padding: 8px;
+  
+}
+
+.ptag {
+  font-size: 18px;
+  color: red;
+}
+
