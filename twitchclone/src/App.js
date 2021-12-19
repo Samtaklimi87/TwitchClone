@@ -12,6 +12,8 @@ import {
 } from "stream-chat-react";
 import "@stream-io/stream-chat-css/dist/css/index.css";
 
+import Auth from "./components/Auth";
+
 const filters = { type: "gaming" };
 const options = { state: true, presence: true, limit: 10 };
 const sort = { last_message_at: -1 };
@@ -21,7 +23,7 @@ const client = StreamChat.getInstance("smvpecsv9z2p");
 const App = () => {
   const [clientReady, setClientReady] = useState(false);
   const [channel, setChannel] = useState(null);
-
+  const authToken = true;
   useEffect(() => {
     const setupClient = async () => {
       try {
@@ -48,7 +50,9 @@ const App = () => {
   if (!clientReady) return null;
 
   return (
-    <Chat client={client} darkMode={false}>
+    <>
+     {!authToken && <Auth />}
+     {authToken && <Chat client={client} darkMode={false}>
       <ChannelList filters={filters} sort={sort} options={options} />
       <Channel  channel={channel}>
         <Window>
@@ -58,7 +62,8 @@ const App = () => {
         </Window>
         <Thread />
       </Channel>
-    </Chat>
+    </Chat>}
+    </>
   );
 };
 
